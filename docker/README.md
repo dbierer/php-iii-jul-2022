@@ -21,7 +21,7 @@ RUN \
     mkdir /var/www/html && \
     chown -R nginx /var/www/html
 COPY default.conf /etc/nginx/http.d/default.conf
-COPY info.php /var/www/html/info.php
+COPY index.php /var/www/html/index.php
 COPY startup.sh /usr/sbin/startup.sh
 RUN chmod +x /usr/sbin/*.sh
 ENTRYPOINT /usr/sbin/startup.sh
@@ -87,7 +87,7 @@ while sleep 60; do
   fi
 done
 ```
-* Create test PHP script `info.php`:
+* Create test PHP script `index.php`:
 ```
 <?php
 phpinfo();
@@ -104,10 +104,10 @@ docker run -d -p 8008:80 --name docker_test_run docker_test
 ```
 docker container ls
 ```
-* Test from browser: `http://localhost:8008/info.php`
+* Test from browser: `http://localhost:8008/index.php`
 * Shell into the image:
 ```
-docker exec -it docker_test /bin/bash
+docker exec -it docker_test_run /bin/bash
 ```
 * Stop the container:
 ```

@@ -11,9 +11,9 @@ RUN \
     apk add nginx && \
     mv /etc/nginx/http.d/default.conf /etc/nginx/http.d/default.conf.old && \
     mkdir /var/www/html && \
-    chown -R nginx /var/www/html
+    chown -R nginx /var/www
 COPY default.conf /etc/nginx/http.d/default.conf
-COPY info.php /var/www/html/info.php
+COPY index.php /var/www/html/index.php
 COPY startup.sh /usr/sbin/startup.sh
 RUN chmod +x /usr/sbin/*.sh
 ENTRYPOINT /usr/sbin/startup.sh

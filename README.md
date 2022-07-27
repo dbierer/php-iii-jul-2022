@@ -1,6 +1,8 @@
 # PHP III -- Jul 2022 -- Notes
 
 ## TODO
+* Q: Troubleshoot Docker Build Lab
+
 * Q: VM source code update?
 * A: `git clone https://github.com/dbierer/php-iii-jul-2022.git`
 * A: Alternately download zip:
@@ -101,9 +103,11 @@ git clone https://github.com/dbierer/php-iii-jul-2022.git
   * replace `version number` with `Version Number`
 
 ### Custom PHP labs
-Lab: Install the apcu extension using `pecl`
-* To test: use this script: https://github.com/dbierer/php-iii-mar-2021/blob/main/apcu_test.php
-* Need to add `apcu.enable=1` and `apc.shm_size=32M` to `/etc/php/8.0/apache2/php.ini` and run from a browser to have the demo work
+Lab: Install the apcu extension using `zendphpctl`
+* See: https://help.zend.com/zendphp/current/content/installation/linux_installation_zendphpctl.htm
+* To test, use this script: `/path/to/this/repo/extensions/apcu_test.php`
+* Need to add `apcu.enable=1` and `apc.shm_size=32M` to `php.ini` and run from a browser to have the demo work
+  * Note: run the following: `sudo zendphpctl php-config`
 * Restart the web server after modifying the `php.ini` file: `sudo service apache2 restart`
 Lab: New Functions (compile a new extension)
 * Install dependencies:
