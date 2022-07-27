@@ -1,0 +1,71 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "b82d628ed3da6159a0a6d6e9289277a7",
+    "packages": [
+        {
+            "name": "bt51/ntp",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bt51/ntp.git",
+                "reference": "74041299558d8defa8eae4590839bf66692de32f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bt51/ntp/zipball/74041299558d8defa8eae4590839bf66692de32f",
+                "reference": "74041299558d8defa8eae4590839bf66692de32f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "2.0.*@dev"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bt51\\NTP\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Tollakson",
+                    "email": "btollakson.os@gmail.com"
+                }
+            ],
+            "description": "PHP library for interacting with ntp servers",
+            "homepage": "https://github.com/bt51/ntp",
+            "keywords": [
+                "network time protocol",
+                "ntp",
+                "ntp client"
+            ],
+            "support": {
+                "issues": "https://github.com/bt51/ntp/issues",
+                "source": "https://github.com/bt51/ntp/tree/0.1.0"
+            },
+            "time": "2014-05-13T21:11:11+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "bt51/ntp": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.1.0"
+}

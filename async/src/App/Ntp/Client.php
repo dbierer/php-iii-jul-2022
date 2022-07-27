@@ -1,0 +1,30 @@
+<?php
+namespace App\Ntp;
+
+use Closure;
+use DateTime;
+use RuntimeException;
+use Bt51\NTP\Socket;
+use Bt51\NTP\Client as Bt51Client;
+class Client
+{
+    const NTP_POOL = '0.pool.ntp.org';
+    const NTP_PORT = 123;
+    /**
+     * Makes request to NTP server
+     *
+     * @param array $msg : error message
+     * @param DateTime $result : result
+     */
+    public function getTime(array &$msg = []) : DateTime
+    {
+        $socket = new Socket(self::NTP_POOL, self::NTP_PORT);
+        $ntp = new Bt51Client($socket);
+        $time = $ntp->getTime();
+        return $time;
+    }
+    public function getCallback()
+    {
+        return Closure::fromCallable([$this, 'getTime']);
+    }
+}

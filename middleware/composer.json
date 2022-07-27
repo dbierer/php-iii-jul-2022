@@ -1,0 +1,11 @@
+{
+    "require": {
+        "laminas/laminas-diactoros": "*",
+        "psr/http-server-middleware": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Middleware\\" : "src/Middleware"
+        }
+    }
+}

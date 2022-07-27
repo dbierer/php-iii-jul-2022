@@ -1,0 +1,39 @@
+<!-- Page content-->
+<div class="container mt-5">
+    <div class="row">
+        <!-- Side widgets-->
+        <div class="col-lg-8">
+            <!-- Search widget-->
+            <form name="cities_search" method="get">
+            <input name="city_search" class="form-control" id="city_search" type="text" placeholder="Enter city name ..." aria-label="Enter city_state abbreviation ..." aria-describedby="button-search" />
+            <select name="city_select" id="city_select">
+            <?php while ($cities->valid()) : ?>
+                <option value="<?= $cities->key() ?>"><?= $cities->key() ?></option>
+                <?php $cities->next() ?>
+            <?php endwhile; ?>
+            </select>
+            <input type="submit" name="submit_select" value="Get Weather" />
+            </form>
+            <br />
+            <b>Elapsed Time (seconds): </b> <?= $elapsed ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1">Weather Forecast</h1>
+                </header>
+                <!-- Post content-->
+                <section class="mb-5">
+                    <pre>
+                    <?= $output ?>
+                    </pre>
+                </section>
+            </article>
+        </div>
+    </div>
+</div>

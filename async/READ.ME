@@ -1,0 +1,77 @@
+     NIST transmits digital time information in several
+ different formats.  You can use anonymous ftp to copy client
+
+software from this machine that can be used to access the
+ following services:
+
+    
+    1.  ACTS.  The ACTS service transmits time information 
+using standard telephone lines and modems.  The transmitting
+
+hardware can compensate for the transmission delay between NIST 
+and your system. Directory acts contains more information
+on on
+how to use this service and the accuracy that you can expect
+ by using the measured-delay mode.  This directory also contains
+ example 
+software that you can use to access this service using 
+a standard PC or several other popular computers.  
+
+    
+    2.  Network Time.  Directory daytime contains several
+ programs that you can use to synchronize computers that are
+ connected to the 
+Internet.  The programs use our enhancements
+to the standard "daytime" and "time" protocols to obtain 
+information from our server.  In 
+addition to UTC(NIST), the 
+messages contain advance notice of leap seconds and of the 
+transitions to and from daylight saving time 
+(using the formula 
+that is standard in the US).  We have written several different 
+versions of this software for a number of common 
+hardware and 
+software environments.  A generic program in C is also provided 
+that will assist you in developing client software that can 
+provide 
+access to this information from other environments.
+
+    
+    3.  NTP, the Network Time Protocol. All NIST servers also support the Network Time Protocol. Most operating systems have a client
+program that can connect to this service. For more information about NTP, contact www.ntp.org.
+    4.  lockclock.  Directory lockclock contains a 
+prototype daemon program that can be used to synchronize the 
+time of a moderately-sized 
+workstation to UTC(NIST) using 
+periodic calls to our ACTS time service.  This software is 
+experimental and the files in this directory are 
+under development.
+
+     5. Directory autolock contains a different version of this software that 
+supports an explicit specification of the accuracy of the 
+synchronization 
+process.
+
+  
+     6. File software.lst in this directory contains a list of third-party 
+programs that can be used to connect to our servers.  This list is 
+provided 
+as a service and no endorsement by NIST is implied. We have not tested these 
+programs, and we cannot provide any assistance 
+in using them or in resolving 
+problems.  
+     
+For questions, comments, or additional information, please contact:
+
+    
+           Time and Frequency Division
+    
+            Mail Stop 847
+    
+            National Institute of Standards and Technology
+    
+            325 Broadway
+    
+            Boulder, Colorado 803035
+    
+            e-mail: Judah.Levine@nist.gov

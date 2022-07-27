@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Zend by Perforce Training</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Page content-->
+        <div class="container mt-5">
+            <div class="row">
+                <!-- Side widgets-->
+                <div class="col-lg-8">
+                    <!-- Search widget-->
+                    <form name="cities_search" method="get">
+                    <input name="city_search" class="form-control" id="city_search" type="text" placeholder="Enter city name ..." aria-label="Enter city_state abbreviation ..." aria-describedby="button-search" />
+                    <select name="city_select" id="city_select">
+                    <?php while ($cities->valid()) : ?>
+                        <option value="<?= $cities->key() ?>"><?= $cities->key() ?></option>
+                        <?php $cities->next() ?>
+                    <?php endwhile; ?>
+                    </select>
+                    <input type="submit" name="submit_select" value="Get Weather" />
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1">Weather Forecast</h1>
+                        </header>
+                        <!-- Post content-->
+                        <section class="mb-5">
+                            <pre>
+                            <!-- FORECAST -->
+                            <!-- FORECAST -->
+                            </pre>
+                        </section>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Zend by Perforce Training 2021</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

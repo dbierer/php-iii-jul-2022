@@ -1,0 +1,7 @@
+{
+    "require": {
+        "laminas/laminas-diactoros": "^1.8",
+        "laminas/laminas-stratigility": "*",
+        "laminas/laminas-httphandlerrunner": "^1.4"
+    }
+}
