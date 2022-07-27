@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+
+  web-server:
+    container_name: ws-compose
+    image: php-iii/nginx-compose
+    build:
+      context: .
+      dockerfile: Dockerfile.NGINX
+    volumes:
+     - ./html:/var/www/html
+    restart: always
+    working_dir: /var/www/html
+    networks:
+      httpd_net:
+        ipv4_address: 10.20.10.10
+
+  php-fpm:
+    container_name: php-fpm-compose
+    image: php-iii/php-fpm-compose
+    build:
+      context: .
+      dockerfile: Dockerfile.PHP-FPM
+    volumes:
+     - ./html:/var/www/html
+    restart: always
+    working_dir: /var/www/html
+    networks:
+      httpd_net:
+        ipv4_address: 10.20.10.20
+
+networks:
+  httpd_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: "10.20.10.0/24"

@@ -1,0 +1,15 @@
+FROM alpine:latest
+RUN \
+    echo "Installing basic utils ..." && \
+    apk add bash
+RUN \
+    echo "Installing nginx ..." && \
+    apk add nginx && \
+    mv /etc/nginx/http.d/default.conf /etc/nginx/http.d/default.conf.old
+RUN \
+    echo "Setting up app base directory ..." && \
+    mkdir -p /var/www
+COPY compose.nginx.conf /etc/nginx/http.d/default.conf
+COPY compose.startup.nginx.sh /usr/sbin/startup.sh
+RUN chmod +x /usr/sbin/*.sh
+ENTRYPOINT /usr/sbin/startup.sh

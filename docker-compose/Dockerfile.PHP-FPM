@@ -1,0 +1,18 @@
+FROM alpine:latest
+RUN \
+    echo "Installing basic utils ..." && \
+    apk add bash
+RUN \
+    echo "Installing PHP + PHP-FPM ..." && \
+    apk add php && \
+    apk add php-fpm
+RUN \
+    echo "Configuring PHP-FPM to listen to nginx ..." && \
+    sed -i 's/listen = 127\.0\.0\.1:9000/listen = 0\.0\.0\.0:9000/g' /etc/php8/php-fpm.d/www.conf && \
+    echo "listen.allowed_clients = 10.20.10.10" >> /etc/php8/php-fpm.d/www.conf
+RUN \
+    echo "Setting up app base directory ..." && \
+    mkdir -p /var/www
+COPY compose.startup.php-fpm.sh /usr/sbin/startup.sh
+RUN chmod +x /usr/sbin/*.sh
+ENTRYPOINT /usr/sbin/startup.sh
