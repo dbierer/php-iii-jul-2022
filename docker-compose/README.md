@@ -185,3 +185,6 @@ From the command line:
 ```
 curl -X GET http://10.20.10.10/index.php?city=Potsdam&state=NY
 ```
+
+## Stop Container
+Just hit `CTL+C`
