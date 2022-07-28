@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+
+  zend-php:
+    container_name: zendphp-test
+    image: php-iii/zend-php-test
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        TIMEZONE: 'Europe/London'
+        ZENDPHP_VERSION: 8.1
+    volumes:
+     - ./:/home
+    working_dir: /home
+    networks:
+      zendphp_test_net:
+        ipv4_address: 10.40.10.10
+
+networks:
+  zendphp_test_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: "10.40.10.0/24"
