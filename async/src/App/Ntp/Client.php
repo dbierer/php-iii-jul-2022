@@ -8,7 +8,8 @@ use Bt51\NTP\Socket;
 use Bt51\NTP\Client as Bt51Client;
 class Client
 {
-    const NTP_POOL = '0.pool.ntp.org';
+    const NTP_SVR = [0,1,2,3];
+    const NTP_POOL = '.pool.ntp.org';
     const NTP_PORT = 123;
     /**
      * Makes request to NTP server
@@ -18,7 +19,8 @@ class Client
      */
     public function getTime(array &$msg = []) : DateTime
     {
-        $socket = new Socket(self::NTP_POOL, self::NTP_PORT);
+        $svr = self::NTP_SVR[array_rand(self::NTP_SVR)];
+        $socket = new Socket($svr . self::NTP_POOL, self::NTP_PORT);
         $ntp = new Bt51Client($socket);
         $time = $ntp->getTime();
         return $time;
