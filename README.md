@@ -1,43 +1,14 @@
 # PHP III -- Jul 2022 -- Notes
 
 ## TODO
-* Q: Troubleshoot Docker Build Lab
-
-* Q: VM source code update?
-* A: `git clone https://github.com/dbierer/php-iii-jul-2022.git`
-* A: Alternately download zip:
+Class Repository:
+```
+git clone https://github.com/dbierer/php-iii-jul-2022.git
+```Alternately download zip:
   * https://github.com/dbierer/php-iii-jul-2022/archive/refs/heads/main.zip
 
 * Q: Jenkins up and running?
 TBD
-
-* Q: Async examples: ReactPHP, Swoole and PHP 8.1 fibers?
-* A: https://github.com/dbierer/PHP-8-Programming-Tips-Tricks-and-Best-Practices/tree/main/ch12
-
-* Get example of new PHP 8 serialization
-  * https://github.com/dbierer/classic_php_examples/blob/master/oop/oop_magic_sleep_wakeup.php
-  * Article on why `__unserialize()` was introduced: https://wiki.php.net/rfc/custom_object_serialization
-  * https://github.com/dbierer/classic_php_examples/blob/master/oop/oop_magic_serialize_unserialize.php
-* Q: Do union types also apply to class properties?
-* A: Yes, it does
-* A: See: https://github.com/dbierer/classic_php_examples/blob/master/oop/oop_union_typed_property.php
-
-* Q: Example of nullsafe operator?
-* A: See: https://github.com/dbierer/PHP-8-Programming-Tips-Tricks-and-Best-Practices/blob/main/ch02/php8_nullsafe_short.php
-* A: See: https://github.com/dbierer/PHP-8-Programming-Tips-Tricks-and-Best-Practices/blob/main/ch02/php8_nullsafe_xml.php
-
-* Q: Example of `SplFixedArray`?
-* A: See: https://github.com/dbierer/PHP-8-Programming-Tips-Tricks-and-Best-Practices/blob/main/ch10/php7_spl_fixed_arr_size.php
-
-* Q: Practical example of `SplObjectStorage`?
-* A: See: https://github.com/dbierer/PHP-8-Programming-Tips-Tricks-and-Best-Practices/blob/main/ch10/php8_spl_obj_storage.php
-
-* QW: Example of FilterIterator
-* A: See: https://github.com/dbierer/classic_php_examples/blob/master/oop/oop_spl_filteriterator_anon_class.php
-
-* Q: Find examples of ArrayIterator::STD_PROP_LIST and ArrayIterator::ARRAY_AS_PROPS?
-* A: Couldn't find any examples, but ran across this article:
-  * https://stackoverflow.com/questions/14910599/what-does-the-flags-parameter-of-arrayiterator-and-arrayobject-do
 
 ## Homework
 For Wed 27 Jul 2022
@@ -103,29 +74,7 @@ git clone https://github.com/dbierer/php-iii-jul-2022.git
   * replace `version number` with `Version Number`
 
 ### Custom PHP labs
-Lab: Install the apcu extension using `zendphpctl`
-* See: https://help.zend.com/zendphp/current/content/installation/linux_installation_zendphpctl.htm
-* To test, use this script: `/path/to/this/repo/extensions/apcu_test.php`
-* Need to add `apcu.enable=1` and `apc.shm_size=32M` to `php.ini` and run from a browser to have the demo work
-  * Note: run the following: `sudo zendphpctl php-config`
-* Restart the web server after modifying the `php.ini` file: `sudo service apache2 restart`
-Lab: New Functions (compile a new extension)
-* Install dependencies:
-```
-sudo apt install php8.0-dev
-```
-Lab: OpCache and JIT
-* Change the last line of code to output not using scientific notation!
-```
-printf("%8.12f\n", microtime(TRUE) - $start);
-```
-* Don't forget to set this parameter in the CLI `php.ini` file!
-```
-opcache.enable_cli=1
-```
-* JIT demo video: https://studio.youtube.com/video/eJHEpZZtc0c/edit
-  * Source code referenced in the video:
-  * https://github.com/dbierer/PHP-8-Programming-Tips-Tricks-and-Best-Practices.git
+See: https://github.com/dbierer/php-iii-jul-2022/blob/main/custom_php
 
 ### Docker Build Lab
 See: https://github.com/dbierer/php-iii-jul-2022/blob/main/docker
@@ -167,17 +116,33 @@ CREATE TABLE `orders` (
 
 ### Middleware Labs
 Lab: Add Middleware (Stratigility lab)
-* Source code: `wget https://opensource.unlikelysource.com/stratigility_src.zip`
-  * Remove `~/Zend/workspaces/DefaultWorkspace/stratigility` directory structure
-  * Unzip the source code into a directory on the VM from `~/Zend/workspaces/DefaultWorkspace/`
-  * Change to the newly unzipped `stratigility` directory
-  * Run `php composer.phar install --ignore-platform-reqs`
-  * Reset permissions:
+* Remove `~/Zend/workspaces/DefaultWorkspace/stratigility` directory structure
+```
+cd ~/Zend/workspaces/DefaultWorkspace
+rm -rf ./stratigility
+```
+* Unzip the source code into a directory on the VM from `~/Zend/workspaces/DefaultWorkspace/`
+```
+wget https://opensource.unlikelysource.com/stratigility_src.zip
+unzip stratigility_src.zip
+```
+* Change to the newly unzipped `stratigility` directory
+```
+cd stratigility
+```
+* Install libraries using Composer
+```
+composer install --ignore-platform-reqs
+```
+* Reset permissions:
 ```
 sudo chgrp -R www-data *
 sudo chmod -R 775 *
 ```
-  * Do the lab
+* Do the lab as per the instructions
+
+### Async Labs
+See: https://github.com/dbierer/php-iii-jul-2022/blob/main/async
 
 ## Resources
 Previous class notes:
@@ -188,6 +153,10 @@ Previous class notes:
 Source code for Stratigility demo updated for Laminas:
   * Source code: `https://opensource.unlikelysource.com/stratigility_src.zip`
   * Sample data dump: `https://opensource.unlikelysource.com/phpcourse.sql`
+
+Examples of PHP Async:
+* Clone this repo: https://github.com/dbierer/PHP-8-Programming-Tips-Tricks-and-Best-Practices.git
+* Async examples are in the `ch12` folder
 
 ## Class Notes
 Data type hints
@@ -517,6 +486,11 @@ Oauth2 client:
   * https://packagist.org/packages/league/oauth2-client
   * You can then pick from around 60 different "providers" (e.g. authentication sources)
 
+## Middleware
+Here's a good intro to the basic concepts:
+* https://docs.laminas.dev/laminas-stratigility/v3/intro/
+Another middleware example:
+*
 ## Software Design
 The original seminal work in this area:
   * https://en.wikipedia.org/wiki/Design_Patterns
@@ -533,6 +507,35 @@ pcre.jit=1
 ```
 
 ## Q & A
+* Q: Async examples: ReactPHP, Swoole and PHP 8.1 fibers?
+* A: https://github.com/dbierer/PHP-8-Programming-Tips-Tricks-and-Best-Practices/tree/main/ch12
+
+* Q: Get example of new PHP 8 serialization
+* A: https://github.com/dbierer/classic_php_examples/blob/master/oop/oop_magic_sleep_wakeup.php
+* A: Article on why `__unserialize()` was introduced: https://wiki.php.net/rfc/custom_object_serialization
+* A: https://github.com/dbierer/classic_php_examples/blob/master/oop/oop_magic_serialize_unserialize.php
+
+* Q: Do union types also apply to class properties?
+* A: Yes, it does
+* A: See: https://github.com/dbierer/classic_php_examples/blob/master/oop/oop_union_typed_property.php
+
+* Q: Example of nullsafe operator?
+* A: See: https://github.com/dbierer/PHP-8-Programming-Tips-Tricks-and-Best-Practices/blob/main/ch02/php8_nullsafe_short.php
+* A: See: https://github.com/dbierer/PHP-8-Programming-Tips-Tricks-and-Best-Practices/blob/main/ch02/php8_nullsafe_xml.php
+
+* Q: Example of `SplFixedArray`?
+* A: See: https://github.com/dbierer/PHP-8-Programming-Tips-Tricks-and-Best-Practices/blob/main/ch10/php7_spl_fixed_arr_size.php
+
+* Q: Practical example of `SplObjectStorage`?
+* A: See: https://github.com/dbierer/PHP-8-Programming-Tips-Tricks-and-Best-Practices/blob/main/ch10/php8_spl_obj_storage.php
+
+* Q: Example of FilterIterator
+* A: See: https://github.com/dbierer/classic_php_examples/blob/master/oop/oop_spl_filteriterator_anon_class.php
+
+* Q: Find examples of ArrayIterator::STD_PROP_LIST and ArrayIterator::ARRAY_AS_PROPS?
+* A: Couldn't find any examples, but ran across this article:
+  * https://stackoverflow.com/questions/14910599/what-does-the-flags-parameter-of-arrayiterator-and-arrayobject-do
+
 * Q: Do you have any documentation for HAL+JSON?
 * A: https://docs.mezzio.dev/mezzio-hal/v2/
 

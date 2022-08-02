@@ -7,11 +7,11 @@ composer install --ignore-platform-reqs
 ```
 * Enter this command
 ```
-php -S localhost:9999 -t public
+php -S localhost:8008 -t public
 ```
 * From the browser:
 ```
-http://localhost:9999
+http://localhost:8008
 ```
 
 

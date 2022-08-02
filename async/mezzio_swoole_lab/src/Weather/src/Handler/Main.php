@@ -44,7 +44,7 @@ class Main implements RequestHandlerInterface
         $output = var_export($params, TRUE);
 
         // if we have a name, make API call to weather service using lat/lon
-        if ($name) {
+        if (!empty($name)) {
             $lat = $cities[$name][0] ?? NULL;
             $lon = $cities[$name][1] ?? NULL;
             if (!empty($lat) && !empty($lon)) {

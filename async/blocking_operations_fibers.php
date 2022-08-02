@@ -1,5 +1,6 @@
 <?php
 include __DIR__ . '/vendor/autoload.php';
+use App\Number\Prime;
 use App\Ntp\Client;
 use App\Lorem\Ipsum;
 use App\Geonames\Random;
@@ -25,6 +26,12 @@ $fibers = [
         $city = Random::pickCity();
         echo "Random City Info:\n";
         var_dump($city);
+    }),
+    new Fiber(function () {
+        // Generate prime numbers
+        echo "Prime numbers:\n";
+        foreach (Prime::generate(9_000_000, 9_000_999) as $num) echo $num . ' ';
+        echo PHP_EOL;
     }),
 ];
 
