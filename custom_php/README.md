@@ -13,7 +13,7 @@ sudo mv ./zendphpctl /usr/sbin/zendphpctl
 Lab: Install an Extension
 * Install the `apcu` extension using `zendphpctl`
 ```
-zendphpctl ext-install apcu
+sudo zendphpctl ext-install apcu
 ```
 * Confirm installation:
 ```
@@ -21,7 +21,10 @@ php -m |grep apcu
 ```
 * Make sure that `apcu` is enabled:
 ```
-$ cat /etc/php/8.1-zend/mods-available/apcu.ini
+cat /etc/php/8.1-zend/mods-available/apcu.ini
+```
+  * You should see something like this:
+```
 extension=apcu.so
 apc.enabled=1
 apc.shm_size=32M
@@ -30,7 +33,7 @@ apc.enable_cli=1
 ```
 * Run the test server:
 ```
-php -S localhost:8008
+php -S localhost:8008 -t /path/to/repo/custom_php
 ```
 * From the browser: `http://localhost:8008`
 * Be sure to run *With APCU* twice to see the caching effect!

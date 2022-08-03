@@ -8,11 +8,16 @@ Lab: Swoole Extension
 chmod +x ./zendphpctl
 sudo mv ./zendphpctl /usr/sbin/zendphpctl
 ```
-  * Install the PHP 8.1
+  * Install PHP 8.1
 Now you can install the Swoole extension:
-* Install the `swoole` extension using `zendphpctl`
+* Install the `swoole` extension from source:
 ```
-zendphpctl ext-install swoole
+git clone https://github.com/swoole/swoole-src.git
+cd swoole-src
+/usr/bin/phpize8.1-zend
+./configure
+make
+sudo make install
 ```
 * Confirm installation:
 ```

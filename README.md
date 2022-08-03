@@ -4,11 +4,9 @@
 Class Repository:
 ```
 git clone https://github.com/dbierer/php-iii-jul-2022.git
-```Alternately download zip:
+```
+Alternately download zip:
   * https://github.com/dbierer/php-iii-jul-2022/archive/refs/heads/main.zip
-
-* Q: Jenkins up and running?
-TBD
 
 ## Homework
 For Wed 27 Jul 2022
@@ -62,7 +60,8 @@ git clone https://github.com/dbierer/php-iii-jul-2022.git
 ```
 
 ## Lab Notes
-### Jenkins Tour
+### Jenkins Labs
+Get Jenkins up and running:
 * Pull image
 ```
 docker pull jenkins/jenkins:alpine
@@ -71,7 +70,15 @@ docker pull jenkins/jenkins:alpine
 ```
 docker run --name jenkins_test -p 8080:8080 -p 50000:50000 --restart=on-failure -v jenkins_home:/var/jenkins_home jenkins/jenkins:alpine
 ```
-* Open the browser to this URL: `http://localhost:80080`
+* If you get this message:
+```
+docker: Error response from daemon: Conflict. The container name "/jenkins_test" is already in use by container
+```
+  * Stop and remove the old container:
+```
+docker container stop jenkins_test
+docker container rm jenkins_test
+```
 * Unlock the password:
   * Look at the output screen to see the generated password
   * Alternatively, to shell into the container to obtain the password, open a new terminal window and proceed as follows:
@@ -80,7 +87,11 @@ docker exec -it jenkins_test /bin/bash
 cat /var/jenkins_home/secrets/initialAdminPassword
 exit
 ```
+* Open the browser to this URL: `http://localhost:8080`
+* Unlock and  set up admin
 * Install recommended plug-ins
+* Do the Jenkins set up as outlined in course module 1
+* Do the Jenkins labs as outlined in course module 5
 
 ### Custom PHP labs
 See: https://github.com/dbierer/php-iii-jul-2022/blob/main/custom_php
@@ -124,31 +135,7 @@ CREATE TABLE `orders` (
 
 
 ### Middleware Labs
-Lab: Add Middleware (Stratigility lab)
-* Remove `~/Zend/workspaces/DefaultWorkspace/stratigility` directory structure
-```
-cd ~/Zend/workspaces/DefaultWorkspace
-rm -rf ./stratigility
-```
-* Unzip the source code into a directory on the VM from `~/Zend/workspaces/DefaultWorkspace/`
-```
-wget https://opensource.unlikelysource.com/stratigility_src.zip
-unzip stratigility_src.zip
-```
-* Change to the newly unzipped `stratigility` directory
-```
-cd stratigility
-```
-* Install libraries using Composer
-```
-composer install --ignore-platform-reqs
-```
-* Reset permissions:
-```
-sudo chgrp -R www-data *
-sudo chmod -R 775 *
-```
-* Do the lab as per the instructions
+See: https://github.com/dbierer/php-iii-jul-2022/blob/main/middleware
 
 ### Async Labs
 See: https://github.com/dbierer/php-iii-jul-2022/blob/main/async

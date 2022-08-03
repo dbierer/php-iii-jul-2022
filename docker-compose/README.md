@@ -59,13 +59,6 @@ if [ $status -ne 0 ]; then
   exit $status
 fi
 echo "Started nginx succesfully"
-
-# Naive check runs checks once a minute to see if either of the processes exited.
-# This illustrates part of the heavy lifting you need to do if you want to run
-# more than one service in a container. The container exits with an error
-# if it detects that either of the processes has exited.
-# Otherwise it loops forever, waking up every 60 seconds
-
 while sleep 60; do
   ps |grep nginx |grep -v grep
   PROCESS_2_STATUS=$?
@@ -76,7 +69,6 @@ while sleep 60; do
     exit 1
   fi
 done
-
 ```
 
 ## Create Files to Build php-fpm
@@ -115,13 +107,6 @@ if [ $status -ne 0 ]; then
   exit $status
 fi
 echo "Started php-fpm succesfully"
-
-# Naive check runs checks once a minute to see if either of the processes exited.
-# This illustrates part of the heavy lifting you need to do if you want to run
-# more than one service in a container. The container exits with an error
-# if it detects that either of the processes has exited.
-# Otherwise it loops forever, waking up every 60 seconds
-
 while sleep 60; do
   ps |grep php-fpm$VER |grep -v grep
   PROCESS_1_STATUS=$?
@@ -136,8 +121,10 @@ done
 ## Create Docker Compose file
 Create the file `docker-compose.yml`:
 ```
-version: '3.7'
+version: '3.3'
+
 services:
+
   web-server:
     container_name: ws-compose
     image: php-iii/nginx-compose
@@ -151,6 +138,7 @@ services:
     networks:
       httpd_net:
         ipv4_address: 10.20.10.10
+
   php-fpm:
     container_name: php-fpm-compose
     image: php-iii/php-fpm-compose
@@ -164,6 +152,7 @@ services:
     networks:
       httpd_net:
         ipv4_address: 10.20.10.20
+
 networks:
   httpd_net:
     ipam:
@@ -178,6 +167,20 @@ When you unzip it, it creates the `./html` directory used by both containers.
 wget https://opensource.unlikelysource.com/post_code_test_app.zip
 unzip post_code_test_app.zip
 ```
+## Build and Bring the Containers Online
+Build the containers using Docker Compose
+```
+docker-compose build
+```
+Bring online:
+```
+docker-compose up
+```
+If you want to bring online in "detached" (background) mode:
+```
+docker-compose up -d
+```
+
 ## Test
 The app (currently) only supports city/states in the USA.
 From a browser: `http://10.20.10.10/index.php?city=Potsdam&state=NY`
@@ -188,3 +191,7 @@ curl -X GET http://10.20.10.10/index.php?city=Potsdam&state=NY
 
 ## Stop Container
 Just hit `CTL+C`
+* If you brought online using detached mode:
+```
+docker-compose down
+```

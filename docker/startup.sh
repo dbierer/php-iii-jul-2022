@@ -19,12 +19,6 @@ if [ $status -ne 0 ]; then
 fi
 echo "Started nginx succesfully"
 
-# Naive check runs checks once a minute to see if either of the processes exited.
-# This illustrates part of the heavy lifting you need to do if you want to run
-# more than one service in a container. The container exits with an error
-# if it detects that either of the processes has exited.
-# Otherwise it loops forever, waking up every 60 seconds
-
 while sleep 60; do
   ps |grep php-fpm$VER |grep -v grep
   PROCESS_1_STATUS=$?
