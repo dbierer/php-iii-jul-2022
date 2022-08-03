@@ -62,16 +62,25 @@ git clone https://github.com/dbierer/php-iii-jul-2022.git
 ```
 
 ## Lab Notes
-### Setup Jenkins CI
-* The CheckStyle plug-in reached end-of-life. All functionality has been integrated into the Warnings Next Generation Plugin.
-* Same applies to `warnings` and `pmd` : integrated into `Warnings NG`
-* Here are some other suggestions for initial setup:
-  * replace `checkstyle` with `Warnings Next Generation`
-  * replace `build-environment` with `Build Environment`
-  * replace `phing` with `Phing`
-  * replace `violations` with `Violations`
-  * replace `htmlpublisher` with `Build-Publisher` (???)
-  * replace `version number` with `Version Number`
+### Jenkins Tour
+* Pull image
+```
+docker pull jenkins/jenkins:alpine
+```
+* Run the image:
+```
+docker run --name jenkins_test -p 8080:8080 -p 50000:50000 --restart=on-failure -v jenkins_home:/var/jenkins_home jenkins/jenkins:alpine
+```
+* Open the browser to this URL: `http://localhost:80080`
+* Unlock the password:
+  * Look at the output screen to see the generated password
+  * Alternatively, to shell into the container to obtain the password, open a new terminal window and proceed as follows:
+```
+docker exec -it jenkins_test /bin/bash
+cat /var/jenkins_home/secrets/initialAdminPassword
+exit
+```
+* Install recommended plug-ins
 
 ### Custom PHP labs
 See: https://github.com/dbierer/php-iii-jul-2022/blob/main/custom_php
