@@ -1,24 +1,10 @@
 # PHP Async
 
 Lab: Swoole Extension
-* If you haven't yet installed ZendPHP, follow the installation instructions here:
-  * https://help.zend.com/zendphp/current/content/installation/linux_installation_zendphpctl.htm
-  * Make `zendphpctl` available as a command:
+* Install PHP 7.4 from Ondrej standard community PPA
 ```
-chmod +x ./zendphpctl
-sudo mv ./zendphpctl /usr/sbin/zendphpctl
-```
-  * Install PHP 8.1
-Now you can install the Swoole extension:
-* Install the `swoole` extension from source:
-```
-cd /tmp
-git clone https://github.com/swoole/swoole-src.git
-cd swoole-src
-/usr/bin/phpize8.1-zend
-./configure
-make
-sudo make install
+sudo apt-get install -y php7.4
+sudo apt-get install -y php7.4-swoole
 ```
 * Confirm installation:
 ```
@@ -47,6 +33,10 @@ php swoole_test.php
 ```
 * From the VM browser: `http://localhost:9501`
 
+NOTE: to switch between PHP alternatives (e.g. outside of ZendPHP):
+```
+sudo update-alternatives
+```
 
 ## Other Examples
 NOTE: these are a work-in-progress and still need tweaking
