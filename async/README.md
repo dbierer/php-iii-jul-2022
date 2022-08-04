@@ -12,6 +12,7 @@ sudo mv ./zendphpctl /usr/sbin/zendphpctl
 Now you can install the Swoole extension:
 * Install the `swoole` extension from source:
 ```
+cd /tmp
 git clone https://github.com/swoole/swoole-src.git
 cd swoole-src
 /usr/bin/phpize8.1-zend
@@ -23,7 +24,7 @@ sudo make install
 ```
 php -m |grep swoole
 ```
-* Create a test program `server.php`:
+* Create a test program `/path/to/test/program/server.php`:
 ```
 <?php
 $server = new Swoole\HTTP\Server("127.0.0.1", 9501);
@@ -47,10 +48,8 @@ php swoole_test.php
 * From the VM browser: `http://localhost:9501`
 
 
-## Blocking Operations
-Try each of these in turn to see the effect of async on PHP code.
-The Swoole examples require the `Swoole` extension to be installed.
-The Fibers exmples requires PHP 8.1.
+## Other Examples
+NOTE: these are a work-in-progress and still need tweaking
 
 ### Normal
 ```
@@ -58,6 +57,7 @@ php blocking_operations_normal.php
 ```
 
 ### Swoole
+The Swoole examples require the `Swoole` extension to be installed.
 Blocking operations solved using coroutines:
 ```
 php blocking_operations_swoole_coroutines.php
@@ -76,7 +76,18 @@ php swoole_server.php
 ```
 Then, from a browser: `http://localhost:9501`
 
+### ReactPHP
+Install ReactPHP
+```
+php ../composer.phar install
+```
+Run the example
+```
+php blocking_operations_react_php.php
+```
+
 ### Fibers
+The Fibers exmples requires PHP 8.1+
 ```
 php blocking_operations_fibers.php
 ```
@@ -84,7 +95,7 @@ php blocking_operations_fibers.php
 ### Mezzio Swoole Lab
 ```
 cd mezzio_swoole_lab
-composer install --ignore-platform-reqs
+php ../../composer.phar install --ignore-platform-reqs
 php -S localhost:8008 -t public
 ```
 From a browser: `http://localhost:8008/weather`

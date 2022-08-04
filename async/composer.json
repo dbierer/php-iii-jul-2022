@@ -1,6 +1,7 @@
 {
     "require": {
-        "bt51/ntp": "dev-master"
+        "bt51/ntp": "dev-master",
+        "react/async": "*"
     },
     "autoload": {
         "psr-4": {

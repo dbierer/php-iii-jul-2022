@@ -14,7 +14,7 @@ sudo zendphpctl ext-install pdo mysql
 ```
 * Install zend-stratigility:
 ```
-php composer.phar install
+php ../composer.phar install
 ```
 * Enter this command
 ```
