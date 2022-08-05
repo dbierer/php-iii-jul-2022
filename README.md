@@ -137,6 +137,8 @@ CREATE TABLE `orders` (
 
 ### Middleware Labs
 See: https://github.com/dbierer/php-iii-jul-2022/blob/main/middleware
+Low level program control functionality
+* see https://www.php.net/manual/en/book.pcntl.php
 
 ### Async Labs
 See: https://github.com/dbierer/php-iii-jul-2022/blob/main/async

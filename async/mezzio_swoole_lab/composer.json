@@ -47,13 +47,14 @@
         "laminas/laminas-component-installer": "^2.5.0",
         "laminas/laminas-config-aggregator": "^1.5.0",
         "laminas/laminas-diactoros": "^2.6.0",
+        "laminas/laminas-servicemanager": "^3.4",
         "laminas/laminas-stdlib": "^3.3.1",
         "laminas/laminas-zendframework-bridge": "^1.2.0",
         "mezzio/mezzio": "^3.5.0",
         "mezzio/mezzio-helpers": "^5.6.0",
-        "laminas/laminas-servicemanager": "^3.4",
         "mezzio/mezzio-laminasrouter": "^3.0.1",
-        "mezzio/mezzio-laminasviewrenderer": "^2.2"
+        "mezzio/mezzio-laminasviewrenderer": "^2.2",
+        "mezzio/mezzio-swoole": "^4.3"
     },
     "require-dev": {
         "laminas/laminas-development-mode": "^3.3.0",
