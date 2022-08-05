@@ -1,12 +1,17 @@
 # To Run:
 From a terminal window (command prompt) running from this directory:
-* If you have not already installed ZendPHP:
-  * Follow the installation instructions here:
-    * https://help.zend.com/zendphp/current/content/installation/linux_installation_zendphpctl.htm
-  * Make `zendphpctl` available as a command:
+If not already done, install PHP using ZendPHP:
+* Follow the installation instructions here:
+  * https://help.zend.com/zendphp/current/content/installation/linux_installation_zendphpctl.htm
+* Make `zendphpctl` available as a command:
 ```
 chmod +x ./zendphpctl
 sudo mv ./zendphpctl /usr/sbin/zendphpctl
+```
+* Install the PHP version of your choice (e.g. 8.1):
+```
+sudo zendphpctl repo-install
+sudo zendphpctl php-install 8.1
 ```
 * Install the PDO extension (if not already installed)
 ```

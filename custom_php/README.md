@@ -8,7 +8,11 @@ Lab: Install PHP using ZendPHP
 chmod +x ./zendphpctl
 sudo mv ./zendphpctl /usr/sbin/zendphpctl
 ```
-* Install the PHP version of your choice
+* Install the PHP version of your choice (e.g. 8.1):
+```
+sudo zendphpctl repo-install
+sudo zendphpctl php-install 8.1
+```
 
 Lab: Install an Extension
 * Install the `apcu` extension using `zendphpctl`
