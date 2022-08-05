@@ -1,5 +1,53 @@
 # Custom PHP Labs
 
+Lab: Install Extension from Source
+* Get list of PHP versions and make note of the path to the original PHP 8.1 version:
+```
+sudo update-alternatives --list php
+```
+* Set PHP to the original 8.1 (s/be `/usr/bin/php8.1`
+```
+sudo update-alternatives --set php /usr/bin/php8.1
+```
+
+* Install the pre-requisite packages
+```
+sudo apt install -y php8.1-dev libcurl4-openssl-dev
+```
+* Find the latest version of Swoole: `http://pecl.php.net/package/openswoole` and assign it to `VER`
+```
+# example: 4.11.1
+VER=4.11.1
+```
+* Install the Swoole extension from source:
+```
+cd /tmp
+wget http://pecl.php.net/get/openswoole-$VER.tgz
+tar xvf openswoole-$VER.tgz
+cd openswoole-$VER
+phpize
+./configure \
+    --enable-openswoole \
+    --enable-openssl \
+    --enable-sockets \
+    --enable-swoole-curl \
+    --enable-swoole-json
+make
+sudo make install
+```
+* Create this entry:
+```
+sudo gedit /etc/php/8.1/cli/conf.d/60-swoole.ini
+```
+  * With this contents:
+```
+extension=openswoole.so
+```
+* Confirm:
+```
+php -m |grep swoole
+```
+
 Lab: Install PHP using ZendPHP
 * Follow the installation instructions here:
   * https://help.zend.com/zendphp/current/content/installation/linux_installation_zendphpctl.htm
@@ -14,7 +62,7 @@ sudo zendphpctl repo-install
 sudo zendphpctl php-install 8.1
 ```
 
-Lab: Install an Extension
+Lab: Install an Extension Using ZendPHP
 * Install the `apcu` extension using `zendphpctl`
 ```
 sudo zendphpctl ext-install apcu

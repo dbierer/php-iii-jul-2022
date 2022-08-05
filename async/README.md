@@ -1,48 +1,23 @@
 # PHP Async
 
-Lab: Swoole Extension
-If not already done, install PHP using ZendPHP:
-* Follow the installation instructions here:
-  * https://help.zend.com/zendphp/current/content/installation/linux_installation_zendphpctl.htm
-* Make `zendphpctl` available as a command:
-```
-chmod +x ./zendphpctl
-sudo mv ./zendphpctl /usr/sbin/zendphpctl
-```
-* Install the PHP version of your choice (e.g. 8.1):
-```
-PHPVER=8.1
-sudo zendphpctl repo-install
-sudo zendphpctl php-install $PHPVER
-```
-* Install the pre-requisite packages
-```
-sudo apt install -y php$PHPVER-zend-dev libcurl4-openssl-dev
-```
-* Find the latest version of Swoole: `http://pecl.php.net/package/swoole` and assign it to `VER`
-```
-# example: 5.0.0
-VER=5.0.0
-```
-* Install the Swoole extension from source:
-```
-cd /tmp
-wget http://pecl.php.net/get/swoole-$VER.tgz
-tar xvf swoole-$VER.tgz
-cd swoole-$VER
-phpsize$PHPVER-zend
-./configure \
-    --enable-openssl \
-    --enable-openswoole \
-    --enable-swoole-curl \
-    --enable-swoole-json
-make
-sudo make install
-```
-* Confirm installation:
+Confirm that the Swoole extension is installed:
 ```
 php -m |grep swoole
 ```
+If not: 
+* Get list of PHP versions and make note of the path to the original PHP 8.1 version:
+```
+sudo update-alternatives --list php
+```
+* Set PHP to the original 8.1 (s/be `/usr/bin/php8.1`
+```
+sudo update-alternatives --set php /usr/bin/php8.1
+```
+* Install Swoole
+```
+sudo apt install php8.1-swoole
+```
+
 * Create a test program `/path/to/test/program/server.php`:
 ```
 <?php

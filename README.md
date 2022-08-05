@@ -45,19 +45,20 @@ sudo mv phpMyAdmin-5.2.0-all-languages/ phpmyadmin
 ```
 sudo apt install -y git
 ```
+* Install PHP 8.1 (if not already)
+```
+sudo apt install php8.1
+```
+
 Increase the disk size (needed for the Docker labs!)
 * See: https://recoverit.wondershare.com/computer-problems/increase-virtualbox-disk-size.html
 
-Refresh the `Zend/workspaces/DefaultWorkspace/php3` folder
-* Change to the default workspace directory
+* Clone repo with updated code examples
 ```
-cd
-cd Zend/workspaces/DefaultWorkspace
-```
-* Repo with updated code examples
-```
+cd /home/vagrant
 git clone https://github.com/dbierer/php-iii-jul-2022.git
 ```
+IMPORTANT: Take a snapshot of the VM in this pristine state!
 
 ## Lab Notes
 ### Jenkins Labs
